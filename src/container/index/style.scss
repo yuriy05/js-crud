@@ -16,12 +16,15 @@
     &__content {
         display: grid;
         gap: s.space(6);
+        width: 50%;
+        margin: 0 auto;
     }
 
     &__field {
         display: flex;
         flex-direction: column;
         gap: s.space(2);
+        // color: e6e6ea;
     }
 
     &__label {
@@ -29,14 +32,21 @@
     }
 
     &__input {
-        border: 1px solid s.color("light");
+        border: 3px solid s.color("light");
         padding: s.space(2);
+        caret-color: #2ab7ca;
+        border-color: #e6e6ea;
     }
 
     &__button {
         border: 1px solid s.color("light");
         padding: s.space(2);
         border-radius: 20px;
+    }
+
+    &__button:hover {
+       background-color: #2AB7CA;
+    //    color: #2AB7CA;
     }
 }
 

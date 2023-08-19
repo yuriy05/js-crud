@@ -13,6 +13,8 @@
 .form__content {
   display: grid;
   gap: 24px;
+  width: 50%;
+  margin: 0 auto;
 }
 .form__field {
   display: flex;
@@ -23,13 +25,18 @@
   font-size: 14px;
 }
 .form__input {
-  border: 1px solid #ddd;
+  border: 3px solid #ddd;
   padding: 8px;
+  caret-color: #2ab7ca;
+  border-color: #e6e6ea;
 }
 .form__button {
   border: 1px solid #ddd;
   padding: 8px;
   border-radius: 20px;
+}
+.form__button:hover {
+  background-color: #2AB7CA;
 }
 
 main {

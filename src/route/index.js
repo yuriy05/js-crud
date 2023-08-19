@@ -1,5 +1,4 @@
 // Підключаємо технологію express для back-end сервера
-const e = require('express')
 const express = require('express')
 // Cтворюємо роутер - місце, куди ми підключаємо ендпоїнти
 const router = express.Router()
@@ -9,7 +8,7 @@ const router = express.Router()
 class User {
   static #list = []
 
-  constructor (email, login, password) {
+  constructor(email, login, password) {
     this.email = email
     this.login = login
     this.password = password
@@ -26,12 +25,15 @@ class User {
     return this.#list
   }
 
-  static getById = (id) => this.#list.findIndex((user) => user.id === id)
+  static getById = (id) =>
+    this.#list.find((user) => user.id === id)
 
   static deleteById = (id) => {
-    const index = this.#list.findIndex((user) => user.id === id)
-
-    if(index !== -1) {
+    const index = this.#list.findIndex(
+      (user) => user.id === id,
+    )
+    
+    if (index !== -1) {
       this.#list.splice(index, 1)
       return true
     } else {
@@ -40,15 +42,16 @@ class User {
   }
 
   static updateById = (id, data) => {
-    const user = this.getById(id);
+    const user = this.getById(id)
 
-    if(user) {
-      this.update(user, data)
-      return true
-    } else {
-      return false
-    }
-  } 
+   if (user) {
+    this.update(user, data)
+
+    return true 
+   } else {
+    return false
+   }
+  }
 
   static update = (user, { email }) => {
     if (email) {
@@ -59,14 +62,13 @@ class User {
 
 // ================================================================
 
-
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/', function (req, res) {
   // res.render генерує нам HTML сторінку
 
-  const list = User.getList();
+  const list = User.getList()
 
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('index', {
@@ -88,15 +90,13 @@ router.get('/', function (req, res) {
 router.post('/user-create', function (req, res) {
   // res.render генерує нам HTML сторінку
 
-  const {email, login, password} = req.body;
+  const { email, login, password } = req.body
 
-
-  const user = new User(email, login, password);
+  const user = new User(email, login, password)
 
   User.add(user)
 
   console.log(User.getList())
-
 
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('success-info', {
@@ -112,10 +112,9 @@ router.post('/user-create', function (req, res) {
 router.get('/user-delete', function (req, res) {
   // res.render генерує нам HTML сторінку
 
-  const { id } = req.query;
+  const { id } = req.query
 
   User.deleteById(Number(id))
-
 
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('success-info', {
@@ -131,23 +130,28 @@ router.get('/user-delete', function (req, res) {
 router.post('/user-update', function (req, res) {
   // res.render генерує нам HTML сторінку
 
-  const { email, password, id } = req.body;
+  const { email, password, id } = req.body
 
-  let result = false;
+  let result = false
 
   const user = User.getById(Number(id))
 
+
   if (user.verifyPassword(password)) {
-    User.update(user, {email})  
-    result = true;
+    User.update(user, { email })
+    result = true
   }
 
-  
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('success-info', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'success-info',
-    info: result ? 'Дані успішно змінено' : 'Виникла помилка',
+    info: result 
+    ? 'Емайл пошта оновлена'
+    : 'Сталась помилка',
+    // result
+    //   ? 'Дані успішно змінено'
+    //   : 'Виникла помилка',
   })
   // ↑↑ сюди вводимо JSON дані
 })
