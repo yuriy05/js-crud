@@ -1,23 +1,27 @@
 
 <main>
-  <section>
+  <section class="product__create">
+    <h1 class="product__title">Створення товару</h1>
     <div class="form">
-      <h1 class="form__title">Створення товару</h1>
       <form method="post" action="/user-create">
         <div class="form__content">
           <h2 class="form__info">Інформація про товар</h2>
-          <div class="form__field">
+          <div class="form__tech">
+          <div class="form__field--name">
             <label for="email" class="form__label">Назва товару: </label>
             <input type="email" name="email" class="form__input" placeholder="Введіть назву товару">
           </div>
-          <div class="form__field">
+          <div class="form__field--price">
             <label for="login" class="form__label">Ціна: </label>
             <input type="login" name="login" class="form__input" placeholder="Введіть ціну товару">
           </div>
-          <div class="form__field">
-            <label for="password" class="form__label">Додайте ваш опис до товару</label>
-            <input type="password" name="password" class="form__input">
-            <p>Відображається у картці товару</p>
+          </div>
+          <div class="form__description">
+            <div class="form__field--description">
+            <label for="description" class="form__label">Короткий опис до товару</label>
+            <input type="description" name="description" class="form__input" placeholder="Додайте опис">
+            <p class="form__additional-info">Відображається у картці товару</p>
+          </div>
           </div>
           <button class="form__button">Створити товар</button>
         </div>
