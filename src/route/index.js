@@ -56,103 +56,21 @@ class Product {
 
 // ================================================================
 
-// ================================================================
-
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
 router.get('/', function (req, res) {
   // res.render генерує нам HTML сторінку
 
-  const list = Product.getList()
-
   // ↙️ cюди вводимо назву файлу з сontainer
   res.render('index', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'index',
-
-    data: {
-      products: {
-        list,
-        isEmpty: list.length === 0,
-      },
-    },
   })
   // ↑↑ сюди вводимо JSON дані
 })
 
 // ================================================================
 
-router.post('/product-create', function (req, res) {
-  // res.render генерує нам HTML сторінку
-
-  const { name, price, description } = req.body
-
-  const product = new Product(name, price, description)
-
-  Product.add(product)
-
-  console.log(Product.getList())
-
-  // ↙️ cюди вводимо назву файлу з сontainer
-  res.render('success-info', {
-    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-    style: 'success-info',
-    info: 'Користувач створений',
-  })
-  // ↑↑ сюди вводимо JSON дані
-})
-
-// // ================================================================
-
-// router.get('/user-delete', function (req, res) {
-//   // res.render генерує нам HTML сторінку
-
-//   const { id } = req.query
-
-//   User.deleteById(Number(id))
-
-//   // ↙️ cюди вводимо назву файлу з сontainer
-//   res.render('success-info', {
-//     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-//     style: 'success-info',
-//     info: 'Користувача видалено',
-//   })
-//   // ↑↑ сюди вводимо JSON дані
-// })
-
-// // ================================================================
-
-// router.post('/user-update', function (req, res) {
-//   // res.render генерує нам HTML сторінку
-
-//   const { email, password, id } = req.body
-
-//   let result = false
-
-//   const user = User.getById(Number(id))
-
-
-//   if (user.verifyPassword(password)) {
-//     User.update(user, { email })
-//     result = true
-//   }
-
-//   // ↙️ cюди вводимо назву файлу з сontainer
-//   res.render('success-info', {
-//     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-//     style: 'success-info',
-//     info: result 
-//     ? 'Емайл пошта оновлена'
-//     : 'Сталась помилка',
-//     // result
-//     //   ? 'Дані успішно змінено'
-//     //   : 'Виникла помилка',
-//   })
-//   // ↑↑ сюди вводимо JSON дані
-// })
-
-// // Підключаємо роутер до бек-енду
-
-// // Підключаємо роутер до бек-енду
-// module.exports = router
+// Підключаємо роутер до бек-енду
+module.exports = router
