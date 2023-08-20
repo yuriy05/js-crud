@@ -6,14 +6,12 @@ const router = express.Router()
 class Product {
   static #list = []
 
-  
-
-  constructor(name, price, description) {
-    this.id = this.generateId();
+  constructor(name, price, description, id, createDate) {
     this.name = name;
     this.price = price;
-    this.description = description
-    this.createDate = new Date().toISOString;
+    this.description = description;
+    this.id = id;
+    this.createDate = createDate;
   }
 
   static generateId = () => {
@@ -21,7 +19,39 @@ class Product {
     return randomId;
   }
 
-  
+  static getList = () => {
+    return this.#list
+  }
+
+  static add = (name, price, description) => {
+    const id = this.generateId();
+    const createDate = new Date().toISOString;
+    const product = new Product(name, price, description, id, createDate);
+    this.#list.push(product);
+    return product;
+  }
+
+  static getById = (id) => {
+    return this.#list.find(product => product.id === id);
+  }
+
+  static updateById(id, data) {
+    const product = Product.getById(id);
+    if (product) {
+      Object.assign(product, data);
+      return product;
+    }
+    return null;
+  }
+
+  static deleteById = (id) => {
+    const index = this.#list.findIndex(product => product.id === id);
+    if (index !== -1) {
+      return this.#list.splice(index, 1)[0];
+    } else {
+      return null;
+    }
+  }
 }
 
 // ================================================================
