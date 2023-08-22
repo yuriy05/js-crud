@@ -1,7 +1,7 @@
 @use "../../lib/service.scss" as s;
 
 
-.product__create {
+.product__edit {
     display: flex;
     flex-direction: column;
     gap: s.space(26);
@@ -36,7 +36,7 @@
 
     &__tech {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: s.space(8);
 
     .form__field--name {
@@ -51,9 +51,16 @@
         gap: s.space(2);
     }
 
+    .form__field--id {
+        display: grid;
+        grid-column: 5/7;
+        gap: s.space(2);
+    }
+
     input {
         height: 35px;
     }
+
     }
 
     &__field--description {
@@ -70,35 +77,54 @@
         }
     }
 
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: s.space(8);
+
+            .form__button--update {
+                background-color: s.color(primary);
+                border-radius: 4px;
+                padding: s.space(4);
+                width: 50%;
+                color: white;
+
+                &:hover {
+                    opacity: 0.7;
+                    transition-duration: 0.5s;
+                }
+
+                &:active {
+                    opacity: 0.5;
+                    transition-duration: 0.5s;
+                }
+            }
+
+            .form__button--delete {
+                text-decoration: none;
+                background-color: s.color(delete);
+                border-radius: 4px;
+                padding: s.space(4);
+                width: 50%;
+                color: white;
+                text-align: center;
+
+                &:hover {
+                    opacity: 0.7;
+                    transition-duration: 0.5s;
+                }
+
+                &:active {
+                    opacity: 0.5;
+                    transition-duration: 0.5s;
+                }
+            }
+        }
+
     input {
         border: 1px solid s.color(dark-gray);
         border-radius: 4px;
         caret-color: s.color(primary);
         padding-left: s.space(2);
-    }
-
-    &__button {
-        background-color: s.color(primary);
-        border-radius: 4px;
-        padding: s.space(4);
-        color: white;
-    }
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    gap: s.space(26);
-}
-
-.product__list {
-    display: flex;
-    flex-direction: column;
-    gap: s.space(26);
-
-    .product__title {
-        color: s.color(primary);
-        font-weight: 700;
-        font-size: 32px;
     }
 }

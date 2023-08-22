@@ -1,0 +1,93 @@
+.product__list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.product__list .product__position {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 0;
+  align-items: center;
+}
+.product__list .main__page {
+  text-decoration: none;
+  color: #5D675B;
+  position: relative;
+}
+.product__list .main__page:before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #5D675B;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  transform: scaleX(0);
+}
+.product__list .main__page:hover:before {
+  opacity: 0.7;
+  transition-duration: 0.5s;
+  transform: scaleX(1);
+}
+.product__list .main__page:active {
+  opacity: 0.5;
+  transition-duration: 0.5s;
+}
+
+.product__title {
+  font-weight: 700;
+  color: #446DF6;
+  font-size: 32px;
+}
+
+.product-list {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.product-list .product__empty {
+  padding: 0 16px 0;
+}
+.product-list .card {
+  width: 33.33%;
+  padding: 0 16px 0;
+}
+
+.card__block {
+  background-color: #FBFEF9;
+  border-radius: 12px;
+  box-shadow: 0px 3px 20px 0px #5D675B;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+.card__block .card__name {
+  font-weight: 700;
+  font-size: 18px;
+  color: #120309;
+}
+.card__block .card__info {
+  font-size: 14px;
+  color: #120309;
+}
+.card__block .card__id {
+  font-size: 14px;
+  color: #5D675B;
+}
+.card__block .tech {
+  display: flex;
+  justify-content: space-between;
+}
+.card__block .tech .card__price {
+  font-weight: 700;
+  font-size: 14px;
+}
+.card__block .tech .card__update {
+  text-decoration: none;
+  color: #446DF6;
+}
+
+/*# sourceMappingURL=style.css.map */

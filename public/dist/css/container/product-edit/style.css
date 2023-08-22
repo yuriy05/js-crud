@@ -1,9 +1,9 @@
-.product__create {
+.product__edit {
   display: flex;
   flex-direction: column;
   gap: 52px;
 }
-.product__create .product__title {
+.product__edit .product__title {
   color: #446DF6;
   font-weight: 700;
   font-size: 32px;
@@ -28,7 +28,7 @@
 }
 .form__tech {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 }
 .form__tech .form__field--name {
@@ -39,6 +39,11 @@
 .form__tech .form__field--price {
   display: grid;
   grid-column: 3/5;
+  gap: 4px;
+}
+.form__tech .form__field--id {
+  display: grid;
+  grid-column: 5/7;
   gap: 4px;
 }
 .form__tech input {
@@ -55,34 +60,48 @@
   color: #5D675B;
   font-size: 10px;
 }
+.form__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.form__buttons .form__button--update {
+  background-color: #446DF6;
+  border-radius: 4px;
+  padding: 8px;
+  width: 50%;
+  color: white;
+}
+.form__buttons .form__button--update:hover {
+  opacity: 0.7;
+  transition-duration: 0.5s;
+}
+.form__buttons .form__button--update:active {
+  opacity: 0.5;
+  transition-duration: 0.5s;
+}
+.form__buttons .form__button--delete {
+  text-decoration: none;
+  background-color: #FF101F;
+  border-radius: 4px;
+  padding: 8px;
+  width: 50%;
+  color: white;
+  text-align: center;
+}
+.form__buttons .form__button--delete:hover {
+  opacity: 0.7;
+  transition-duration: 0.5s;
+}
+.form__buttons .form__button--delete:active {
+  opacity: 0.5;
+  transition-duration: 0.5s;
+}
 .form input {
   border: 1px solid #5D675B;
   border-radius: 4px;
   caret-color: #446DF6;
   padding-left: 4px;
-}
-.form__button {
-  background-color: #446DF6;
-  border-radius: 4px;
-  padding: 8px;
-  color: white;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 52px;
-}
-
-.product__list {
-  display: flex;
-  flex-direction: column;
-  gap: 52px;
-}
-.product__list .product__title {
-  color: #446DF6;
-  font-weight: 700;
-  font-size: 32px;
 }
 
 /*# sourceMappingURL=style.css.map */
