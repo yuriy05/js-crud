@@ -1,0 +1,135 @@
+@use "../../lib/service.scss" as s;
+
+@use "../../component/heading/style.scss" as heading;
+
+@use "../../component/field/style.scss" as filed;
+
+@use "../../component/divider/style.scss" as divider;
+
+@use "../../component/button/style.scss" as button;
+
+.main {
+    background-color: s.color(light-background);
+    box-shadow: 0px 3px 20px 0px s.color(dark-gray);
+    border-radius: 10px;
+    margin: s.space(12);
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+    padding: s.space(12);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+}
+
+.info__id {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__main {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    gap: s.space(10);
+}
+
+.info__firstname {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__lastname {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__phone {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__email {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__product {
+    display: grid;
+    grid-template-rows: 2;
+    gap: s.space(10);
+}
+
+.info__product-name {
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(8);
+}
+
+.info__comment {
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(8);
+}
+
+.info__price {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    gap: s.space(10);
+}
+
+.info__price-default {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__price-delivery {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__price-total {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__bonus {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.info__label {
+    color: #343A40;
+    font-size: 16px;
+}

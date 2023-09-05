@@ -1,0 +1,82 @@
+<main class="main">
+    {{#with data.purchase}}
+
+    {{>heading title="Інформація про замовлення"}}
+
+    <div class="info">
+        <div class="info__id">
+            <p class="info__label">ID:</p>
+            <p>{{id}}</p>
+        </div>
+
+        {{>divider}}
+
+        <div class="info__main">
+            <div class="info__firstname">
+                <p class="info__label">Ім'я:</p>
+                <p>{{firstname}}</p>
+            </div>
+
+            <div class="info__lastname">
+                <p class="info__label">Прізвище:</p>
+                <p>{{lastname}}</p>
+            </div>
+
+            <div class="info__phone">
+                <p class="info__label">Телефон:</p>
+                <p>{{phone}}</p>
+            </div>
+
+            <div class="info__email">
+                <p class="info__label">Електрона пошта:</p>
+                <p>{{email}}</p>
+            </div>
+        </div>
+
+        {{> divider}}
+
+        <div class="info__product">
+            <div class="info__product-name">
+                <p class="info__label">Назва товару:</p>
+                <p>{{product.title}}</p>
+            </div>
+
+            <div class="info__comment">
+                <p class="info__label">Коментар: </p>
+                <p>{{comment}}</p>
+            </div>
+        </div>
+
+        {{> divider}}
+
+        <div class="info__price">
+            <div class="info__price-default">
+                <p class="info__label">Вартість товарів: </p>
+                <p>{{productPrice}}</p>
+            </div>
+
+            <div class="info__price-delivery">
+                <p class="info__label">Вартість доставки: </p>
+                <p>{{deliveryPrice}}</p>
+            </div>
+
+            <div class="info__price-total">
+                <p class="info__label">Сума до сплати: </p>
+                <p>{{totalPrice}}</p>
+            </div>
+
+            <div class="info__bonus">
+                <p class="info__label">Нараховані бонуси: </p>
+                <p>{{bonus}}</p>
+            </div>
+        </div>
+
+        <div class="info__button">
+            <a href="/purchase-update?id={{id}}">
+                {{>button text="Змінити дані"}}
+            </a>
+        </div>
+
+    </div>
+    {{/with}}
+</main>

@@ -1,0 +1,72 @@
+@use "../../lib/service.scss" as s;
+
+@use "../../component/heading/style.scss" as heading;
+
+@use "../../component/purchase-product/style.scss" as purchaseProduct;
+
+@use "../../component/field/style.scss" as filed;
+
+@use "../../component/button/style.scss" as button;
+
+.main {
+    background-color: s.color(light-background);
+    box-shadow: 0px 3px 20px 0px s.color(dark-gray);
+    border-radius: 10px;
+    margin: s.space(12);
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+    padding: s.space(12);  
+}
+
+.update {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+}
+
+.update__id {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);  
+}
+
+.update__main {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    gap: s.space(10);
+}
+
+.update__firstname {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.update__lastname {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.update__phone {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+
+.update__email {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: s.space(4);
+}
+

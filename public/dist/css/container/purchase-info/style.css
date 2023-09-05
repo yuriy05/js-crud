@@ -1,0 +1,189 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading__title {
+  font-size: 40px;
+  color: #0050FF;
+  font-weight: 400;
+}
+
+.heading__info {
+  font-size: 16px;
+  color: #000;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.field__label {
+  font-size: 14px;
+}
+
+.field__input {
+  border: 1px solid #CED4DA;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.field--disabled {
+  position: absolute;
+  display: none;
+}
+
+.product-info__divider {
+  width: 100%;
+  height: 1px;
+  background-color: #CED4DA;
+}
+
+.button {
+  background-color: #0050FF;
+  color: white;
+  border: none;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+.button:hover {
+  opacity: 0.7;
+}
+
+.main {
+  background-color: #FBFEF9;
+  box-shadow: 0px 3px 20px 0px #5D675B;
+  border-radius: 10px;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info__id {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__main {
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 2;
+  gap: 20px;
+}
+
+.info__firstname {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__lastname {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__phone {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__email {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__product {
+  display: grid;
+  grid-template-rows: 2;
+  gap: 20px;
+}
+
+.info__product-name {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info__comment {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info__price {
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 2;
+  gap: 20px;
+}
+
+.info__price-default {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__price-delivery {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__price-total {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__bonus {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info__label {
+  color: #343A40;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=style.css.map */
