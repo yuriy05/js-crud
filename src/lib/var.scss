@@ -4,9 +4,16 @@ $colorMap: (
     delete: #FF101F,
     dark-gray:#5D675B,
     light-background: #FBFEF9,
-    dark-text: #120309 
+    dark-text: #120309, 
     light: #ddd,
 
+    //*===========================
+    //* Змінні для 3-purchase
+
+    border: #CED4DA,
+    main: #0050FF,
+    dark: #212529,
+    text-gray: #808080,
 );
 
 @function color($key) {

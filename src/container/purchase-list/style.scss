@@ -1,0 +1,89 @@
+@use "../../lib/service.scss" as s;
+
+@use "../../component/heading/style.scss" as heading;
+
+@use "../../component/purchase-product/style.scss" as purchaseProduct;
+
+@use "../../component/field/style.scss" as filed;
+
+@use "../../component/divider/style.scss" as divider;
+
+@use "../../component/button/style.scss" as button;
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(10);
+    padding: s.space(12);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list__order {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: s.space(10);
+}
+
+.list__id {
+    grid-row: 2;
+    color: s.color(text-gray);
+    font-size: 16px;
+    align-self: center;
+}
+
+.list__title {
+  grid-row: 1;
+  grid-column: 2;
+  color: s.color(text-gray);
+    font-size: 16px;
+    align-self: end;
+}
+
+.list__name {
+   grid-row: 3;
+   grid-column: 2;
+   font-size: 16px;
+}
+
+.list__sum {
+    grid-row: 1;
+    grid-column: 3;
+    color: s.color(text-gray);
+    font-size: 16px;
+    align-self: end;
+}
+
+.list__price {
+    grid-row: 3;
+    grid-column: 3;
+    font-size: 16px;
+}
+
+.list__bonuses {
+    grid-row: 1;
+    grid-column: 4;
+    color: s.color(text-gray);
+    font-size: 16px;
+    align-self: end;
+}
+
+.list__bonus {
+    grid-row: 3;
+    grid-column: 4;
+    font-size: 16px;
+}
+
+.list__button {
+    grid-row: 2;
+    grid-column: 5;
+}
+
+.list__divider {
+    grid-row: 4;
+    grid-column: 1/6;
+}
