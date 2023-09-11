@@ -1,19 +1,26 @@
 $colorMap: (
 
-    primary: #446DF6,
-    delete: #FF101F,
-    dark-gray:#5D675B,
-    light-background: #FBFEF9,
-    dark-text: #120309, 
-    light: #ddd,
+    // primary: #446DF6,
+    // delete: #FF101F,
+    // dark-gray:#5D675B,
+    // light-background: #FBFEF9,
+    // dark-text: #120309, 
+    // light: #ddd,
+
+     //*===========================
+     //* Змінні для 3-purchase
+
+    // border: #CED4DA,
+    // main: #0050FF,
+    // dark: #212529,
+    // text-gray: #808080,
+
 
     //*===========================
-    //* Змінні для 3-purchase
+    //* Змінні для 3-spotify
 
-    border: #CED4DA,
-    main: #0050FF,
-    dark: #212529,
-    text-gray: #808080,
+    dark: #121212,
+    light: #FFFFFF,
 );
 
 @function color($key) {
