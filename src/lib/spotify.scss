@@ -10,6 +10,12 @@ a {
     }
 }
 
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .main {
     background-color: s.color(dark);
 

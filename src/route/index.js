@@ -5,6 +5,48 @@ const router = express.Router()
 
 // ================================================================
 
+class TrackSpotify {
+  static #list = []
+
+  constructor(link) {
+    this.id = Math.floor(Math.random() * 90000) + 10000
+    this.link = link
+  }
+
+  static addTrack(track) {
+    TrackSpotify.#list.push(track)
+  }
+
+  static getRandomTrack() {
+    const randomIndex = Math.floor(
+      Math.random() * TrackSpotify.#list.length,
+    )
+    return TrackSpotify.#list[randomIndex]
+  }
+
+  static getList() {
+    return TrackSpotify.#list
+  }
+}
+
+const track1 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7MnPqlRg4XPv9cqHF76tbs?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track2 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/51HCQFTlKHs7w9Fxo9QcjA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track3 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7fvQ3kv9pCOkFyGdON4k6H?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+const track4 = new TrackSpotify(
+  '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/539yxbKKHPHrI1vc3BI2Ee?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>',
+)
+
+TrackSpotify.addTrack(track1)
+TrackSpotify.addTrack(track2)
+TrackSpotify.addTrack(track3)
+TrackSpotify.addTrack(track4)
+
 class Track {
   static #list = []
 
@@ -17,12 +59,12 @@ class Track {
 
   static create(name, author, image) {
     const newTrack = new Track(name, author, image)
-    this.#list.push(newTrack)
+    Track.#list.push(newTrack)
     return newTrack
   }
 
   static getList() {
-    return this.#list.reverse()
+    return Track.#list.reverse()
   }
 
   static getById(id) {
@@ -35,8 +77,8 @@ class Track {
 }
 
 Track.create(
-  'Test',
-  'Monatik',
+  'Yeah',
+  'Wow',
   'https://picsum.photos/100/100',
 )
 
@@ -59,14 +101,14 @@ Track.create(
 )
 
 Track.create(
-  'Check',
-  'Paul Van Duk',
+  'DR',
+  'RD',
   'https://picsum.photos/100/100',
 )
 
 Track.create(
-  'Another',
-  'INNA',
+  'TopPot',
+  '57',
   'https://picsum.photos/100/100',
 )
 
@@ -75,21 +117,22 @@ Track.create(
 class Playlist {
   static #list = []
 
-  constructor(name) {
+  constructor(name, image, amount) {
     this.id = Math.floor(1000 + Math.random() * 9000)
     this.name = name
+    this.amount = amount
     this.tracks = []
     this.image = 'https://picsum.photos/100/100'
   }
 
-  static create(name) {
-    const newPlaylist = new Playlist(name)
+  static create(name, image, amount) {
+    const newPlaylist = new Playlist(name, image, amount)
     this.#list.push(newPlaylist)
     return newPlaylist
   }
 
   static getList() {
-    return this.#list.reverse()
+    return Playlist.#list.reverse()
   }
 
   static makeMix(playlist) {
@@ -108,18 +151,49 @@ class Playlist {
     )
   }
 
+  updateAmount() {
+    this.amount = this.tracks.length
+  }
+
   addTrack(track) {
-    this.#list.push(track)
+    if (this.hasTrack(track.id)) {
+      console.log('Цей трек вже доданий до плейлиста.');
+      return;
+    }
+  
+    this.tracks.push(track);
+    this.updateAmount();
+  }
+
+  hasTrack(trackId) {
+    return this.tracks.some((track) => track.id === trackId);
+  }
+
+  static randomImage() {
+    const imagesPlaylist = [
+      '/img/spotify/close-to-me.jpg',
+      '/img/spotify/deep.jpg',
+      '/img/spotify/oazo.jpg',
+      '/img/spotify-img/list-img1.jpg',
+      '/img/spotify-img/list-img5.jpg',
+    ]
+
+    const randomImage =
+      imagesPlaylist[
+        Math.floor(Math.random() * imagesPlaylist.length)
+      ]
+    return randomImage
   }
 
   deleteTrackById(trackId) {
     this.tracks = this.tracks.filter (
       (track) => track.id !== trackId,
     )
+    this.updateAmount()
   }
 
   static findListByValue(name) {
-    return this.#list.filter((playlist) => 
+    return Playlist.#list.filter((playlist) => 
       playlist.name.toLowerCase().includes(name.toLowerCase()),
     )
   }
@@ -161,7 +235,9 @@ router.get('/spotify-choose', function (req, res) {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
     style: 'spotify-choose',
 
-    data: {},
+    data: {
+      list: TrackSpotify.getList(),
+    },
   })
   // ↑↑ сюди вводимо JSON дані
 })
@@ -201,7 +277,9 @@ router.post('/spotify-create', function (req, res) {
     }) 
   }
   
-  const playlist = Playlist.create(name)
+  const randomImage = Playlist.randomImage()
+  const amount = isMix ? 3 : 0
+  const playlist = Playlist.create(name, randomImage, amount)
 
   if (isMix) {
     Playlist.makeMix(playlist)
@@ -216,6 +294,7 @@ router.post('/spotify-create', function (req, res) {
       playlistId: playlist.id,
       tracks: playlist.tracks,
       name: playlist.name,
+      image: playlist.image,
     },
   })
 })
@@ -321,15 +400,31 @@ router.post('/spotify-search', function(req, res) {
 // ================================================================
 
 router.get('/spotify-add', function(req, res) {
-  const tracks = Track.getList();
-  const playlists = Playlist.getList();
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = Playlist.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert', {
+      style: 'alert',
+
+      data: {
+        title: 'Error!',
+        info: 'Playlist with that ID was not found!',
+        link: `/spotify-choose`,
+      },
+    })
+  }
 
   res.render('spotify-add', {
     style: 'spotify-add',
+
     data: {
-      tracks: tracks,
-      playlists: playlists,
-    }
+      playlistId: playlist.id,
+      tracks: Track.getList(),
+      name: playlist.name,
+    },
   })
 })
 
@@ -337,34 +432,48 @@ router.get('/spotify-add', function(req, res) {
 // ================================================================
 
 router.get('/spotify-track-add', function (req, res) {
-  const playlistId = Number(req.query.playlistId);
-  const trackId = Number(req.query.trackId);
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
 
-  const playlist = Playlist.getById(playlistId);
+  const playlist = Playlist.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert', {
+      style: 'alert',
+
+      data: {
+        title: 'Error!',
+        info: 'Playlist with that ID was not found!',
+        link: `/spotify-playlist?id=${playlistId}`,
+      },
+    })
+  }
+
   const track = Track.getById(trackId);
 
-  if (playlist && track) {
-    // Перевірка, чи трек не вже існує у плейлисті
-    if (!playlist.tracks.some((t) => t.id === trackId)) {
-      // Додайте трек до плейлисту
-      playlist.tracks.push(track);
-    }
-
-    // Поверніть користувача на сторінку `/spotify-add` з параметром `playlistId`
-    return res.redirect(`/spotify-add?playlistId=${playlistId}`);
-  } else {
-    // Якщо плейлист або трек не знайдено, виведіть помилку
+  if (playlist.hasTrack(track.id)) {
     return res.render('alert', {
       style: 'alert',
       data: {
-        title: 'Помилка',
-        info: 'Треку або плейлиста не знайдено',
-        link: '/',
+        title: 'Alert!',
+        info: 'Цей трек вже доданий до плейлиста.',
+        link: `/spotify-playlist?id=${playlistId}`,
       },
     });
   }
-});
 
+  playlist.addTrack(Track.getById(trackId))
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
 
 // Підключаємо роутер до бек-енду
 module.exports = router

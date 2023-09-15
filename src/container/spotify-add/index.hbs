@@ -1,18 +1,23 @@
 <main class="main">
     {{#with data}}
     <div class="main__content">
-        <h1 class="title title--center">Додати до плейліста</h1>
-
+        <div class="nav">
+             <h1 class="title title--center">Додати до плейліста</h1>
+                 <a href="/">
+                 <img src="img/svg/home.svg" alt="home-button" height="54px" width="54px">
+                </a>
+        </nav>
+        </div>
 
         <ul class="track__list">
             {{#each tracks}}
             <li class="track">
-                <img src="{{image}}" alt="track-image">
+                <img src="{{image}}" alt="track-image" width="100" height="100">
                 <div class="track__content">
                     <strong class="track__name">{{name}}</strong>
                     <em class="track__author">{{author}}</em>
                 </div>
-                <a href="/spotify-track-add?playlistId={{playlistId}}&trackId={{id}}">
+                <a href="/spotify-track-add?playlistId={{../playlistId}}&trackId={{id}}">
                     <img src="img/svg/add-music.svg" alt="add-button">
                 </a>
             </li>
