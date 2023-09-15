@@ -10,7 +10,7 @@
 }
 
 .field__input {
-  border: 1px solid #CED4DA;
+  border: 1px solid;
   padding: 8px;
   border-radius: 10px;
 }
