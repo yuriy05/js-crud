@@ -7,6 +7,12 @@ a:hover {
   opacity: 0.6s;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .main {
   background-color: #121212;
   height: 100%;
